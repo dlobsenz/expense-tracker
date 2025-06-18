@@ -57,6 +57,10 @@ jspm_packages/
 # dotenv environment variables file
 .env
 
+# Generated secrets (if any output files are created)
+secrets.txt
+production-secrets.txt
+
 # IDE files
 .vscode/
 .idea/
