@@ -195,21 +195,25 @@ The app supports these expense categories:
 - Authentication state is managed with React Context
 - Automatic token refresh handles expired access tokens
 
-## Deployment
+## 🚀 Deployment
 
-### Frontend (Vercel/Netlify)
-```bash
-cd client
-npm run build
-# Deploy the dist/ folder
-```
+This app is ready to deploy to free hosting services! See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed step-by-step instructions.
 
-### Backend (Railway/Heroku)
-```bash
-cd server
-# Set DATABASE_URL environment variable
-npm start
-```
+**Quick Overview:**
+- **Backend**: Deploy to Render (free tier)
+- **Frontend**: Deploy to Vercel (free tier) 
+- **Database**: Already using Neon PostgreSQL (free tier)
+
+The deployment guide includes:
+- Complete setup instructions for Render and Vercel
+- Environment variable configuration
+- CORS setup
+- Troubleshooting tips
+- Security best practices
+
+**Live Demo**: After following the deployment guide, your app will be live at:
+- Frontend: `https://your-app.vercel.app`
+- Backend API: `https://your-api.onrender.com`
 
 ## License
 

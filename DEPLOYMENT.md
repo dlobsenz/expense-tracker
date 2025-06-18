@@ -1,0 +1,141 @@
+# Deployment Guide - Expense Tracker
+
+This guide will help you deploy your full-stack expense tracker application to free hosting services.
+
+## 🚀 Quick Deployment Overview
+
+- **Backend**: Deploy to Render (free tier)
+- **Frontend**: Deploy to Vercel (free tier)
+- **Database**: Already using Neon PostgreSQL (free tier)
+
+## 📋 Prerequisites
+
+1. GitHub account (already set up ✅)
+2. Render account (sign up at render.com)
+3. Vercel account (sign up at vercel.com)
+
+## 🔧 Step 1: Deploy Backend to Render
+
+### 1.1 Create Render Account
+1. Go to [render.com](https://render.com)
+2. Sign up with your GitHub account
+3. Connect your GitHub account
+
+### 1.2 Deploy Backend Service
+1. Click "New +" → "Web Service"
+2. Connect your GitHub repository: `https://github.com/dlobsenz/expense-tracker`
+3. Configure the service:
+   - **Name**: `expense-tracker-backend`
+   - **Environment**: `Node`
+   - **Region**: Choose closest to you
+   - **Branch**: `main`
+   - **Root Directory**: `server`
+   - **Build Command**: `npm install`
+   - **Start Command**: `npm start`
+
+### 1.3 Set Environment Variables
+In the Render dashboard, add these environment variables:
+
+```
+NODE_ENV=production
+DATABASE_URL=postgresql://neondb_owner:npg_9zC7WqOsNLuo@ep-weathered-surf-a83wudql-pooler.eastus2.azure.neon.tech/neondb?sslmode=require
+JWT_SECRET=your-super-secret-jwt-key-change-in-production-render
+REFRESH_SECRET=your-super-secret-refresh-key-change-in-production-render
+CLIENT_URL=https://your-frontend-url.vercel.app
+```
+
+**Important**: 
+- Generate new secure JWT secrets for production
+- You'll update CLIENT_URL after deploying the frontend
+
+### 1.4 Deploy
+1. Click "Create Web Service"
+2. Wait for deployment to complete
+3. Note your backend URL (e.g., `https://expense-tracker-backend-xyz.onrender.com`)
+
+## 🌐 Step 2: Deploy Frontend to Vercel
+
+### 2.1 Create Vercel Account
+1. Go to [vercel.com](https://vercel.com)
+2. Sign up with your GitHub account
+
+### 2.2 Deploy Frontend
+1. Click "New Project"
+2. Import your GitHub repository: `https://github.com/dlobsenz/expense-tracker`
+3. Configure the project:
+   - **Framework Preset**: Vite
+   - **Root Directory**: `client`
+   - **Build Command**: `npm run build`
+   - **Output Directory**: `dist`
+
+### 2.3 Set Environment Variables
+In Vercel project settings → Environment Variables, add:
+
+```
+VITE_API_URL=https://your-backend-url.onrender.com
+```
+
+Replace `your-backend-url.onrender.com` with your actual Render backend URL.
+
+### 2.4 Deploy
+1. Click "Deploy"
+2. Wait for deployment to complete
+3. Note your frontend URL (e.g., `https://expense-tracker-abc.vercel.app`)
+
+## 🔄 Step 3: Update CORS Configuration
+
+### 3.1 Update Backend CORS
+1. Go back to your Render dashboard
+2. Update the `CLIENT_URL` environment variable with your Vercel frontend URL
+3. Redeploy the backend service
+
+## ✅ Step 4: Verify Deployment
+
+1. Visit your frontend URL
+2. Try registering a new account
+3. Test logging in and adding expenses
+4. Verify all features work correctly
+
+## 🔧 Troubleshooting
+
+### Common Issues:
+
+1. **CORS Errors**: Make sure CLIENT_URL in backend matches your frontend URL exactly
+2. **Database Connection**: Verify DATABASE_URL is correct in Render environment variables
+3. **Build Failures**: Check build logs in Render/Vercel dashboards
+
+### Backend Logs:
+- Check Render dashboard → Your Service → Logs
+
+### Frontend Logs:
+- Check Vercel dashboard → Your Project → Functions → View Function Logs
+
+## 🔐 Security Notes
+
+1. **Change JWT Secrets**: Use strong, unique secrets for production
+2. **Environment Variables**: Never commit .env files to Git
+3. **Database**: Your Neon database is already configured with SSL
+
+## 📱 Your Live URLs
+
+After deployment, you'll have:
+- **Frontend**: `https://your-app.vercel.app`
+- **Backend**: `https://your-api.onrender.com`
+- **Database**: Neon PostgreSQL (already configured)
+
+## 🎉 Success!
+
+Your expense tracker is now live and accessible to anyone with the URL!
+
+## 📝 Next Steps (Optional)
+
+1. **Custom Domain**: Add a custom domain in Vercel settings
+2. **Monitoring**: Set up error tracking with Sentry
+3. **Analytics**: Add Google Analytics or similar
+4. **Performance**: Monitor with Vercel Analytics
+
+---
+
+Need help? Check the logs in your deployment dashboards or refer to the documentation:
+- [Render Docs](https://render.com/docs)
+- [Vercel Docs](https://vercel.com/docs)
