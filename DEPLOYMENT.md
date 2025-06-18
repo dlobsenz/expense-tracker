@@ -46,9 +46,9 @@ In the Render dashboard, add these environment variables:
 
 ```
 NODE_ENV=production
-DATABASE_URL=postgresql://neondb_owner:npg_9zC7WqOsNLuo@ep-weathered-surf-a83wudql-pooler.eastus2.azure.neon.tech/neondb?sslmode=require
-JWT_SECRET=71e4607f55bf7d159e72356e8f1af14ddd8514075212be8db7df6434236261ca82a9569e836869c51f607ddfd6ebbd3c865f80fe42e854c5d162623ccced8a7b
-REFRESH_SECRET=19b93cae4c6ad94072b77422ca9c990c0b6d5efbead68b554547d15325d9f0e3ac85f6a261f76483497a7c795c3fc0a00c1962287c59776e4a57325dbe28c211
+DATABASE_URL=postgresql://username:password@host.region.provider.com/database?sslmode=require
+JWT_SECRET=your-secure-jwt-secret-generate-new-one
+REFRESH_SECRET=your-secure-refresh-secret-generate-new-one
 CLIENT_URL=https://your-frontend-url.vercel.app
 ```
 
